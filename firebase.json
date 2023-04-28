@@ -1,0 +1,23 @@
+{
+  "database": {
+    "rules": "/src/database.rules.json"
+  },
+  "firestore": {
+    "rules": "/src/firestore.rules",
+    "indexes": "/src/firestore.indexes.json"
+  },
+  "hosting": {
+    "public": "dist/webkert",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

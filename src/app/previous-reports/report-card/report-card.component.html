@@ -1,0 +1,36 @@
+<mat-card class="w-100 h-96">
+    <div class="relative h-2/3 bg-gray-400 rounded-t-md">
+
+        <button
+                class="absolute right-2 top-2 z-10 w-8 h-8 bg-red-600"
+                (click)="deleteReport()"
+                mat-mini-fab
+        >
+            <mat-icon class="text-white">delete</mat-icon>
+        </button>
+
+        <button
+                class="absolute right-12 top-2 z-10 w-8 h-8"
+                color="primary"
+                routerLink="/bejelentes"
+                [state]="{reportId: report?.id}"
+                mat-mini-fab
+        >
+            <mat-icon>edit</mat-icon>
+        </button>
+
+
+
+        <div class="absolute inset-x-0 bottom-0 rounded-t-md bg-blue-600"
+             [style.height]="getFillPercentage(report?.amountUsed) + '%'"></div>
+    </div>
+    <div class="h-1/3 p-2 flex flex-col justify-between">
+        <div class="text-lg text-center font-bold">
+            <span>{{report?.start | dateFormat}}</span> - <span>{{report?.end | dateFormat}}</span>
+        </div>
+        <div class="flex justify-between">
+            <div>Átlag: {{avrgAmountUsed}} m<sup>3</sup></div>
+            <div>{{report?.amountUsed}} m<sup>3</sup></div>
+        </div>
+    </div>
+</mat-card>

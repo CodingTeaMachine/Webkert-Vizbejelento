@@ -1,0 +1,53 @@
+<mat-card class="4/5 lg:w-3/5 xl:w-2/5 mx-auto">
+	<mat-card-header class="justify-center">
+		<mat-card-title>BEJELENTÉS</mat-card-title>
+	</mat-card-header>
+	<mat-card-content class="mx-0 md:mx-5 mt-5">
+		<form class="flex flex-col gap-3" [formGroup]="reportForm">
+			<mat-form-field class="w-full" appearance="fill">
+				<mat-label>Dátum intervallum</mat-label>
+				<mat-date-range-input [rangePicker]="picker">
+					<input matStartDate placeholder="Kezdet" formControlName="startDate">
+					<input matEndDate  placeholder="Vég" formControlName="endDate">
+				</mat-date-range-input>
+				<mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+				<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-date-range-picker #picker></mat-date-range-picker>
+			</mat-form-field>
+			<mat-form-field class="w-full">
+				<mat-label>Mennyiség (m<sup>3</sup>)</mat-label>
+				<input matInput type="number" formControlName="amountUsed"/>
+				<mat-error
+						*ngIf="reportForm.controls.amountUsed.invalid && (reportForm.controls.amountUsed.dirty || reportForm.controls.amountUsed.touched)">
+                    <span *ngIf="reportForm.controls.amountUsed.errors?.['required']; else elseBlock">
+                        Mennyiség megadása kötelező
+                    </span>
+					<ng-template #elseBlock>
+                        <span *ngIf="reportForm.controls.amountUsed.errors?.['min']">
+                            Mennyiség nem lehet kevesebb 1-nél
+                        </span>
+					</ng-template>
+				</mat-error>
+			</mat-form-field>
+		</form>
+	</mat-card-content>
+	<mat-card-actions class="flex flex-col lg:flex-row gap-4 justify-center mb-3">
+		<button
+				[disabled]="!reportForm.valid || savingInProgress"
+				color="primary"
+				class="w-2/3 md:w-1/3"
+				(click)="saveReport()"
+				mat-raised-button
+		>
+			<mat-progress-spinner
+					*ngIf="savingInProgress; else notLoading"
+					mode="indeterminate"
+					class="h-4 w-4"
+			>
+			</mat-progress-spinner>
+			<ng-template #notLoading>
+				BEJELENTÉS
+			</ng-template>
+		</button>
+	</mat-card-actions>
+</mat-card>

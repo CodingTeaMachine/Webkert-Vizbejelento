@@ -1,0 +1,9 @@
+<span class="flex flex-col md:flex-row flex-wrap gap-5 justify-center">
+    <app-report-card
+            *ngFor="let previousReport of previousReports"
+            [avrgAmountUsed]="avrgAmountUsed"
+            [report]="previousReport"
+            (deletedReport)="filterReportFromList(previousReport.id)"
+    >
+    </app-report-card>
+</span>

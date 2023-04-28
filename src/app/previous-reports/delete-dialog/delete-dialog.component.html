@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Bejelentés törlése</h1>
+<mat-dialog-content>
+    <div>
+        Biztosan törölni kívánja a bejelentést?
+    </div>
+    <div>
+        {{data.startDate | dateFormat}} - {{data.endDate | dateFormat}}
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="false">Nem</button>
+    <button mat-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Igen</button>
+</mat-dialog-actions>

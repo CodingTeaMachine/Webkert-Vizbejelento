@@ -1,0 +1,44 @@
+<mat-toolbar class="toolbar px-6 w-full" color="primary">
+	<span>Vízszámla bejelentő</span>
+	<span class="flex-auto"></span>
+	<span class="flex gap-4 items-center">
+		<button mat-icon-button [matMenuTriggerFor]="profileMenu">
+			<mat-icon routerLink="bejelentkezes" class="cursor-pointer">account_circle</mat-icon>
+		</button>
+		<mat-menu #profileMenu="matMenu">
+			<!-- Logged in buttons -->
+			<span *ngIf="!isUserLoggedIn">
+				<button mat-menu-item routerLink="bejelentkezes">
+						<mat-icon>login</mat-icon>
+					<span>Bejelentkezés</span>
+				</button>
+				<button mat-menu-item routerLink="regisztracio">
+					<mat-icon>person_add</mat-icon>
+					<span>Regisztráció</span>
+				</button>
+			</span>
+
+			<!-- Logged out buttons -->
+			<span *ngIf="isUserLoggedIn">
+				<button mat-menu-item routerLink="bejelentes">
+					<mat-icon>bloodtype</mat-icon>
+					Bejelentés
+				</button>
+				<button mat-menu-item routerLink="korabbi-bejelentesek">
+					<mat-icon>history</mat-icon>
+					Korábbi bejelentések
+				</button>
+				<button mat-menu-item (click)="logout()">
+					<mat-icon>logout</mat-icon>
+					<span>Kijelentkezés</span>
+				</button>
+			</span>
+		</mat-menu>
+	</span>
+
+</mat-toolbar>
+
+<div class="px-2 md:px-28 pt-6">
+	<router-outlet></router-outlet>
+
+</div>
