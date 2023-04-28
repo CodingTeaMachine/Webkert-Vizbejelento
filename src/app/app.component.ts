@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CookieService} from "ngx-cookie-service";
 import {UserService} from "./shared/services/user.service";
 import {AuthenticationService} from "./shared/services/authentication.service";

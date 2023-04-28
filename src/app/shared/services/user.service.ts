@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore, DocumentData, DocumentSnapshot} from "@angular/fire/compat/firestore";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {User} from "../../../types/User";
-import firebase from "firebase/compat";
-import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable({
 	providedIn: 'root'
